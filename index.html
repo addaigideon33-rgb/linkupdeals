@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Link-up Deals | Affordable Data Bundles</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #0a8f4f;
+    --green-light: #12b865;
+    --green-dark: #065f34;
+    --green-pale: #e6f7ef;
+    --green-mid: #c2ecd6;
+    --white: #ffffff;
+    --off-white: #f5faf7;
+    --text: #0d1f16;
+    --text-muted: #4a6e58;
+    --border: #c2ecd6;
+    --shadow: 0 4px 24px rgba(10,143,79,0.10);
+    --mtn: #f5c200;
+    --airteltigo: #e2001a;
+    --telecel: #c8102e;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* NAVBAR */
+  nav {
+    background: var(--white);
+    border-bottom: 2px solid var(--border);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(10,143,79,0.07);
+  }
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--green-dark);
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .logo-icon {
+    width: 34px; height: 34px;
+    background: var(--green);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    font-size: 1rem;
+  }
+  .nav-tag {
+    background: var(--green-pale);
+    color: var(--green);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 60%, var(--green-light) 100%);
+    color: white;
+    padding: 56px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 260px; height: 260px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 200px; height: 200px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 50%;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.1rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .hero p {
+    font-size: 1rem;
+    opacity: 0.88;
+    max-width: 340px;
+    margin: 0 auto 24px;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .hero-badges {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    backdrop-filter: blur(4px);
+  }
+
+  /* NETWORKS */
+  .section { padding: 32px 20px; max-width: 480px; margin: 0 auto; }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--green-dark);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: var(--border);
+    border-radius: 2px;
+  }
+
+  .network-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .net-tab {
+    flex: 1;
+    padding: 12px 8px;
+    border-radius: 14px;
+    border: 2px solid var(--border);
+    background: var(--white);
+    cursor: pointer;
+    text-align: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .net-tab .dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+  }
+  .net-tab.mtn .dot { background: var(--mtn); }
+  .net-tab.airteltigo .dot { background: var(--airteltigo); }
+  .net-tab.telecel .dot { background: #e91e63; }
+
+  .net-tab.active, .net-tab:hover {
+    border-color: var(--green);
+    background: var(--green-pale);
+    color: var(--green-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+
+  /* PACKAGES GRID */
+  .packages { display: none; }
+  .packages.active { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 28px; }
+
+  .pkg-card {
+    background: var(--white);
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    padding: 16px 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    position: relative;
+  }
+  .pkg-card:hover, .pkg-card.selected {
+    border-color: var(--green);
+    background: var(--green-pale);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  .pkg-card.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 8px; right: 10px;
+    background: var(--green);
+    color: white;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    display: flex; align-items: center; justify-content: center;
+    line-height: 20px;
+  }
+  .pkg-data {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--green-dark);
+  }
+  .pkg-price {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--green);
+    margin: 4px 0 2px;
+  }
+  .pkg-validity {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+  .pkg-popular {
+    position: absolute;
+    top: -10px; left: 50%; transform: translateX(-50%);
+    background: var(--green);
+    color: white;
+    font-size: 0.62rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 10px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  /* ORDER FORM */
+  .form-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 24px 20px;
+    border: 2px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+  .form-group { margin-bottom: 18px; }
+  label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--green-dark);
+    margin-bottom: 7px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  input, select {
+    width: 100%;
+    padding: 13px 15px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    background: var(--off-white);
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+  input:focus, select:focus { border-color: var(--green); background: white; }
+
+  .order-summary {
+    background: var(--green-pale);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    display: none;
+  }
+  .order-summary.visible { display: block; }
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.88rem;
+    margin-bottom: 6px;
+    color: var(--text-muted);
+  }
+  .summary-row.total {
+    font-weight: 700;
+    color: var(--green-dark);
+    font-size: 1rem;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1.5px dashed var(--border);
+  }
+
+  .momo-info {
+    background: #fffbea;
+    border: 1.5px solid #f5c200;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    font-size: 0.83rem;
+    color: #7a6000;
+    line-height: 1.5;
+  }
+  .momo-info strong { color: #5a4500; display: block; margin-bottom: 3px; }
+
+  .submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--green-dark), var(--green));
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(10,143,79,0.3); }
+  .submit-btn:active { transform: translateY(0); }
+
+  /* SUCCESS */
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .success-screen.visible { display: block; }
+  .success-icon {
+    width: 72px; height: 72px;
+    background: var(--green-pale);
+    border: 3px solid var(--green);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 2rem;
+  }
+  .success-screen h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    color: var(--green-dark);
+    margin-bottom: 10px;
+  }
+  .success-screen p { color: var(--text-muted); line-height: 1.6; font-size: 0.92rem; }
+  .back-btn {
+    margin-top: 24px;
+    display: inline-block;
+    padding: 12px 28px;
+    background: var(--green-pale);
+    color: var(--green-dark);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+  .back-btn:hover { background: var(--green); color: white; border-color: var(--green); }
+
+  /* FOOTER */
+  footer {
+    background: var(--green-dark);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 24px 20px;
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+  footer strong { color: white; font-family: 'Syne', sans-serif; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero, .section { animation: fadeUp 0.5s ease both; }
+  .section { animation-delay: 0.1s; }
+</style>
+</head>
+<body>
+
+<div id="mainContent">
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">🔗</div>
+    Link-up Deals
+  </div>
+  <span class="nav-tag">⚡ Fast Delivery</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Affordable Data<br>Bundles for All</h1>
+  <p>Buy data for yourself or send to friends instantly. All networks covered.</p>
+  <div class="hero-badges">
+    <span class="badge">📱 MTN</span>
+    <span class="badge">📱 AirtelTigo</span>
+    <span class="badge">📱 Telecel</span>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="section">
+
+  <!-- NETWORK TABS -->
+  <div class="section-title">Choose Network</div>
+  <div class="network-tabs">
+    <div class="net-tab mtn active" onclick="selectNetwork('mtn', this)">
+      <span class="dot"></span> MTN
+    </div>
+    <div class="net-tab airteltigo" onclick="selectNetwork('airteltigo', this)">
+      <span class="dot"></span> AirtelTigo
+    </div>
+    <div class="net-tab telecel" onclick="selectNetwork('telecel', this)">
+      <span class="dot"></span> Telecel
+    </div>
+  </div>
+
+  <!-- PACKAGES -->
+  <div class="section-title">Select Package</div>
+  <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:14px;margin-top:-8px;">✅ All prices include VAT & charges</p>
+
+  <!-- MTN Packages -->
+  <div class="packages active" id="pkg-mtn">
+    <div class="pkg-card" style="padding-top:22px" onclick="selectPkg(this, 'MTN', '1GB', 'GHC 5.00', '1 Day')">
+      <div class="pkg-popular">🔥 POPULAR</div>
+      <div class="pkg-data">1GB</div>
+      <div class="pkg-price">GHC 5.00</div>
+      <div class="pkg-validity">1 Day</div>
+    </div>
+    <div class="pkg-card" onclick="selectPkg(this, 'MTN', '2GB', 'GHC 9.50', '2 Days')">
+      <div class="pkg-data">2GB</div>
+      <div class="pkg-price">GHC 9.50</div>
+      <div class="pkg-validity">2 Days</div>
+    </div>
+    <div class="pkg-card" onclick="selectPkg(this, 'MTN', '5GB', 'GHC 21.00', '7 Days')">
+      <div class="pkg-data">5GB</div>
+      <div class="pkg-price">GHC 21.00</div>
+      <div class="pkg-validity">7 Days</div>
+    </div>
+    <div class="pkg-card" onclick="selectPkg(this, 'MTN', '10GB', 'GHC 39.00', '30 Days')">
+      <div class="pkg-data">10GB</div>
+      <div class="pkg-price">GHC 39.00</div>
+      <div class="pkg-validity">30 Days</div>
+    </div>
+    <div class="pkg-card" onclick="selectPkg(this, 'MTN', '20GB', 'GHC 73.00', '30 Days')">
+      <div class="pkg-data">20GB</div>
+      <div class="pkg-price">GHC 73.00</div>
+      <div class="pkg-validity">30 Days</div>
+    </div>
+  </div>
+
+  <!-- AirtelTigo Packages -->
+  <div class="packages" id="pkg-airteltigo">
+    <div class="pkg-card" style="padding-top:22px" onclick="selectPkg(this, 'AirtelTigo', '1GB', 'GHC 5.00', '1 Day')">
+      <div class="pkg-popular">🔥 POPULAR</div>
+      <div class="pkg-data">1GB</div>
+      <div class="pkg-price">GHC 5.00</div>
+      <div class="pkg-validity">1 Day</div>
+    </div>
+    <div class="pkg-card" onclick="selectPkg(this, 'AirtelTigo', '2GB', 'GHC 9.50', '3 Days')">
+      <div class="pkg-data">2GB</div>
+      <div class="pkg-price">GHC 9.50</div>
+      <div class="pkg-validity">3 Days</div>
+    </div>
+    <div class="pkg-card" onclick="selectPkg(this, 'AirtelTigo', '5GB', 'GHC 21.00', '7 Days')">
+      <div class="pkg-data">5GB</div>
+      <div class="pkg-price">GHC 21.00</div>
+      <div class="pkg-validity">7 Days</div>
+    </div>
+    <div class="pkg-card" onclick="selectPkg(this, 'AirtelTigo', '10GB', 'GHC 39.00', '30 Days')">
+      <div class="pkg-data">10GB</div>
+      <div class="pkg-price">GHC 39.00</div>
+      <div class="pkg-validity">30 Days</div>
+    </div>
+    <div class="pkg-card" onclick="selectPkg(this, 'AirtelTigo', '20GB', 'GHC 73.00', '30 Days')">
+      <div class="pkg-data">20GB</div>
+      <div class="pkg-price">GHC 73.00</div>
+      <div class="pkg-validity">30 Days</div>
+    </div>
+  </div>
+
+  <!-- Telecel Packages -->
+  <div class="packages" id="pkg-telecel">
+    <div class="pkg-card" style="padding-top:22px" onclick="selectPkg(this, 'Telecel', '1GB', 'GHC 5.00', '1 Day')">
+      <div class="pkg-popular">🔥 POPULAR</div>
+      <div class="pkg-data">1GB</div>
+      <div class="pkg-price">GHC 5.00</div>
+      <div class="pkg-validity">1 Day</div>
+    </div>
+    <div class="pkg-card" onclick="selectPkg(this, 'Telecel', '2GB', 'GHC 9.50', '2 Days')">
+      <div class="pkg-data">2GB</div>
+      <div class="pkg-price">GHC 9.50</div>
+      <div class="pkg-validity">2 Days</div>
+    </div>
+    <div class="pkg-card" onclick="selectPkg(this, 'Telecel', '5GB', 'GHC 21.00', '7 Days')">
+      <div class="pkg-data">5GB</div>
+      <div class="pkg-price">GHC 21.00</div>
+      <div class="pkg-validity">7 Days</div>
+    </div>
+    <div class="pkg-card" onclick="selectPkg(this, 'Telecel', '10GB', 'GHC 39.00', '30 Days')">
+      <div class="pkg-data">10GB</div>
+      <div class="pkg-price">GHC 39.00</div>
+      <div class="pkg-validity">30 Days</div>
+    </div>
+    <div class="pkg-card" onclick="selectPkg(this, 'Telecel', '20GB', 'GHC 73.00', '30 Days')">
+      <div class="pkg-data">20GB</div>
+      <div class="pkg-price">GHC 73.00</div>
+      <div class="pkg-validity">30 Days</div>
+    </div>
+  </div>
+
+  <!-- ORDER FORM -->
+  <div class="section-title">Your Details</div>
+  <div class="form-card">
+    <div id="mainForm">
+      <div class="form-group">
+        <label>Recipient Number</label>
+        <input type="tel" id="recipientNumber" placeholder="e.g. 0244000000">
+      </div>
+      <div class="form-group">
+        <label>Your MoMo Number (for payment)</label>
+        <input type="tel" id="momoNumber" placeholder="e.g. 0244000000" onblur="sendPaymentPrompt()">
+      </div>
+      <div class="form-group">
+        <label>WhatsApp / SMS Number <span style="font-weight:400;color:var(--text-muted);font-size:0.75rem;text-transform:none">(to receive delivery confirmation)</span></label>
+        <input type="tel" id="whatsappNumber" placeholder="e.g. 0244000000 (optional)">
+      </div>
+
+      <!-- ORDER SUMMARY -->
+      <div class="order-summary" id="orderSummary">
+        <div class="summary-row"><span>Network</span><span id="sum-network">—</span></div>
+        <div class="summary-row"><span>Package</span><span id="sum-pkg">—</span></div>
+        <div class="summary-row"><span>Validity</span><span id="sum-validity">—</span></div>
+        <div class="summary-row total"><span>Total</span><span id="sum-price">—</span></div>
+      </div>
+
+      <!-- MOMO PAYMENT INFO -->
+      <div class="momo-info">
+        <strong>💳 How to Pay (Mobile Money)</strong>
+        After placing your order, you'll receive our payment details to complete your purchase.<br>
+        Data will be sent within <strong>5–15 minutes</strong> after payment confirmation.
+      </div>
+      <!-- PAYMENT DETAILS BOX (shown after MoMo number entered) -->
+      <div id="paymentInfo" style="display:none;background:var(--green-pale);border:2px solid var(--green);border-radius:14px;padding:14px 16px;margin-bottom:18px;text-align:center;">
+        <div style="font-size:0.78rem;font-weight:700;color:var(--green-dark);margin-bottom:8px;">💳 SEND PAYMENT TO:</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--green-dark);letter-spacing:2px;">0550911328</div>
+        <div style="font-size:0.75rem;color:var(--text-muted);margin-top:6px;">Use your phone number as reference</div>
+      </div>
+
+      <button class="submit-btn" onclick="submitOrder()">📦 Place Order Now</button>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="success-screen" id="successScreen">
+      <div class="success-icon">✅</div>
+      <h2>Order Placed!</h2>
+      <p>Your order has been received.<br><br>
+      Please send your payment via <strong>Mobile Money</strong> to complete your order:</p>
+      <div style="background:white;border:2px solid var(--border);border-radius:14px;padding:14px 16px;margin:14px 0;text-align:center;">
+        <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:4px;">LINK-UP DEALS — MOMO NUMBER</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:var(--green-dark);letter-spacing:2px;">0554097854</div>
+        <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">Use your phone number as reference</div>
+      </div>
+      <p>Data will be delivered within <strong>5–15 minutes</strong> after payment confirmation.</p>
+      <div class="back-btn" onclick="resetForm()">← Place Another Order</div>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- end mainContent -->
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel" style="display:none; max-width:480px; margin:0 auto; padding:20px;">
+  <div style="background:var(--green-dark);color:white;border-radius:20px;padding:20px 18px;margin-bottom:20px;">
+    <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:4px;">🔧 Admin Panel</div>
+    <div style="font-size:0.82rem;opacity:0.8;">Link-up Deals — Order Management</div>
+  </div>
+  <div id="ordersList"></div>
+  <div style="text-align:center;margin-top:16px;">
+    <span onclick="closeAdmin()" style="color:var(--text-muted);font-size:0.85rem;cursor:pointer;text-decoration:underline;">← Back to Website</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="mainFooter">
+  <strong>Link-up Deals</strong><br>
+  Fast • Affordable • Reliable Data Bundles<br>
+  Ghana 🇬🇭 | All Networks Covered<br>
+  <span onclick="togglePinBox()" style="opacity:0.3;font-size:0.7rem;cursor:pointer;margin-top:8px;display:inline-block;">⚙</span>
+  <div id="pinBox" style="display:none;margin-top:10px;">
+    <input id="pinInput" type="password" maxlength="4" placeholder="Enter PIN" style="padding:8px 12px;border-radius:8px;border:none;font-size:1rem;width:120px;text-align:center;">
+    <button onclick="checkPin()" style="padding:8px 14px;background:var(--green);color:white;border:none;border-radius:8px;font-weight:700;cursor:pointer;margin-left:6px;">Go</button>
+  </div>
+</footer>
+
+<script>
+  let selectedNetwork = 'mtn';
+  let selectedPkg = null;
+  let orders = [];
+  let adminUnlocked = false;
+
+  const SUPABASE_URL = 'https://uilaixvmmibzwsobfyrz.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_nIqJtAkVN8rsUOu-tfb9uQ_ZffUqSqP';
+  const DATAHUB_KEY = 'sk_a679047d8d0205ee9af85cae7b246dda39c76599c5dfe060';
+  const NETWORK_KEYS = {'MTN':'YELLO','AirtelTigo':'AT_PREMIUM','Telecel':'TELECEL'};
+
+  async function saveOrderToDB(order) {
+    try {
+      await fetch(`${SUPABASE_URL}/rest/v1/orders`, {
+        method: 'POST',
+        headers: {'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`},
+        body: JSON.stringify({network:order.network,data:order.data,price:order.price,recipient:order.recipient,momo:order.momo,wa_num:order.waNum,status:'pending'})
+      });
+    } catch(e) { console.error('DB save error:', e); }
+  }
+
+  async function loadOrdersFromDB() {
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/orders?order=created_at.desc`, {
+        headers: {'apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`}
+      });
+      orders = await res.json();
+      renderOrders();
+    } catch(e) { console.error('DB load error:', e); }
+  }
+
+  async function updateOrderStatus(id, status) {
+    try {
+      await fetch(`${SUPABASE_URL}/rest/v1/orders?id=eq.${id}`, {
+        method: 'PATCH',
+        headers: {'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`},
+        body: JSON.stringify({status})
+      });
+    } catch(e) { console.error('DB update error:', e); }
+  }
+
+  function saveOrders() {}
+
+  function sendPaymentPrompt() {
+    const momo = document.getElementById('momoNumber').value.trim();
+    if (momo.length < 10) return;
+    // Just show payment info box on screen — no WhatsApp to customer
+    document.getElementById('paymentInfo').style.display = 'block';
+  }
+
+  function togglePinBox() {
+    const box = document.getElementById('pinBox');
+    box.style.display = box.style.display === 'none' ? 'block' : 'none';
+    if (box.style.display === 'block') document.getElementById('pinInput').focus();
+  }
+
+  function checkPin() {
+    const pin = document.getElementById('pinInput').value;
+    if (pin === '9090') {
+      document.getElementById('pinBox').style.display = 'none';
+      document.getElementById('pinInput').value = '';
+      showAdmin();
+    } else {
+      document.getElementById('pinInput').value = '';
+      document.getElementById('pinInput').placeholder = 'Wrong PIN!';
+      setTimeout(() => document.getElementById('pinInput').placeholder = 'Enter PIN', 2000);
+    }
+  }
+
+  function promptAdmin() {}
+
+  function showAdmin() {
+    adminUnlocked = true;
+    document.getElementById('mainContent').style.display = 'none';
+    document.getElementById('mainFooter').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'block';
+    document.getElementById('ordersList').innerHTML = '<div style="text-align:center;padding:40px 20px;color:var(--text-muted);">Loading orders... ⏳</div>';
+    loadOrdersFromDB();
+  }
+
+  function closeAdmin() {
+    document.getElementById('adminPanel').style.display = 'none';
+    document.getElementById('mainContent').style.display = 'block';
+    document.getElementById('mainFooter').style.display = 'block';
+  }
+
+  function renderOrders() {
+    const list = document.getElementById('ordersList');
+    if (!orders || orders.length === 0) {
+      list.innerHTML = `<div style="text-align:center;padding:40px 20px;color:var(--text-muted);">No orders yet 📭</div>`;
+      return;
+    }
+    list.innerHTML = orders.map(o => `
+      <div style="background:white;border:2px solid ${o.status === 'delivered' ? 'var(--green)' : 'var(--border)'};border-radius:16px;padding:16px;margin-bottom:14px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+          <span style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--green-dark);">${o.network} — ${o.data}</span>
+          <span style="font-size:0.72rem;padding:3px 10px;border-radius:20px;background:${o.status === 'delivered' ? 'var(--green-pale)' : '#fff8e1'};color:${o.status === 'delivered' ? 'var(--green)' : '#b8860b'};font-weight:600;">${o.status === 'delivered' ? '✅ Delivered' : '⏳ Pending'}</span>
+        </div>
+        <div style="font-size:0.83rem;color:var(--text-muted);line-height:1.8;">
+          📱 <b>Recipient:</b> ${o.recipient}<br>
+          💳 <b>MoMo:</b> ${o.momo}<br>
+          📲 <b>WA/SMS:</b> ${o.wa_num || 'Not provided'}<br>
+          💰 <b>Amount:</b> ${o.price}<br>
+          🕐 <b>Time:</b> ${new Date(o.created_at).toLocaleTimeString()}
+        </div>
+        ${o.status !== 'delivered' ? `
+        <button onclick="markDelivered(${o.id})" style="margin-top:12px;width:100%;padding:12px;background:linear-gradient(135deg,var(--green-dark),var(--green));color:white;border:none;border-radius:12px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;">
+          📲 Mark as Delivered & Notify Customer
+        </button>` : `
+        <div style="margin-top:10px;text-align:center;font-size:0.8rem;color:var(--green);font-weight:600;">✅ Notification sent!</div>`}
+      </div>
+    `).join('');
+  }
+
+  function selectNetwork(n,el){selectedNetwork=n;selectedPkg=null;document.querySelectorAll('.net-tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');document.querySelectorAll('.packages').forEach(p=>p.classList.remove('active'));document.getElementById('pkg-'+n).classList.add('active');document.querySelectorAll('.pkg-card').forEach(c=>c.classList.remove('selected'));document.getElementById('orderSummary').classList.remove('visible');}
+
+  function selectPkg(el,network,data,price,validity){document.querySelectorAll('#pkg-'+selectedNetwork+' .pkg-card').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');selectedPkg={network,data,price,validity};document.getElementById('sum-network').textContent=network;document.getElementById('sum-pkg').textContent=data;document.getElementById('sum-validity').textContent=validity;document.getElementById('sum-price').textContent=price;document.getElementById('orderSummary').classList.add('visible');}
+
+  async function submitOrder(){
+    const recipient=document.getElementById('recipientNumber').value.trim();
+    const momo=document.getElementById('momoNumber').value.trim();
+    const waNum=document.getElementById('whatsappNumber').value.trim();
+    if(!recipient||recipient.length<10){alert('Please enter a valid recipient number.');return;}
+    if(!momo||momo.length<10){alert('Please enter your MoMo number.');return;}
+    if(!selectedPkg){alert('Please select a data package first.');return;}
+
+    const order={network:selectedPkg.network,data:selectedPkg.data,price:selectedPkg.price,validity:selectedPkg.validity,recipient,momo,waNum:waNum||''};
+    await saveOrderToDB(order);
+
+    const msg=`🔔 *NEW ORDER - Link-up Deals*\n\n📱 *Network:* ${selectedPkg.network}\n📦 *Package:* ${selectedPkg.data}\n⏳ *Validity:* ${selectedPkg.validity}\n💰 *Amount:* ${selectedPkg.price}\n\n👤 *Recipient:* ${recipient}\n💳 *MoMo:* ${momo}\n📲 *WA/SMS:* ${waNum||'Not provided'}`;
+    window.open(`https://wa.me/233554097854?text=${encodeURIComponent(msg)}`,'_blank');
+    document.getElementById('mainForm').style.display='none';
+    document.getElementById('successScreen').classList.add('visible');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function resetForm(){document.getElementById('mainForm').style.display='block';document.getElementById('successScreen').classList.remove('visible');document.getElementById('recipientNumber').value='';document.getElementById('momoNumber').value='';document.getElementById('whatsappNumber').value='';if(document.getElementById('paymentInfo'))document.getElementById('paymentInfo').style.display='none';selectedPkg=null;document.querySelectorAll('.pkg-card').forEach(c=>c.classList.remove('selected'));document.getElementById('orderSummary').classList.remove('visible');}
+
+  const DATAHUB_KEY2 = '';
+  const NETWORK_KEYS2 = {};
+
+  async function markDelivered(id) {
+    const order = orders.find(o => o.id === id);
+    if (!order) return;
+
+    const btn = document.querySelector(`button[onclick="markDelivered(${id})"]`);
+    if (btn) { btn.textContent = '⏳ Sending data...'; btn.disabled = true; }
+
+    try {
+      const networkKey = NETWORK_KEYS[order.network] || order.network.toUpperCase();
+      const capacity = order.data.replace('GB', '').replace('MB', '').trim();
+
+      const response = await fetch('https://app.datahubgh.com/api/external/data-purchase', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', 'X-API-Key': DATAHUB_KEY},
+        body: JSON.stringify({networkKey, recipient: order.recipient, capacity})
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        await updateOrderStatus(id, 'delivered');
+        order.status = 'delivered';
+
+        if (order.wa_num) {
+          const msg = `✅ *Link-up Deals*\n\nHello! Your *${order.data} ${order.network}* data bundle has been successfully delivered to *${order.recipient}*. 🎉\n\nOrder No: ${result.data?.orderNumber || 'N/A'}\n\nThank you for choosing Link-up Deals! 🔗\nWe're always here for you. 😊`;
+          window.open(`https://wa.me/233${order.wa_num.replace(/^0/, '')}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        alert(`✅ Data sent!\nOrder: ${result.data?.orderNumber || 'N/A'}\nBalance: GHC ${result.balance?.current || 'N/A'}`);
+      } else {
+        alert(`❌ Failed: ${result.message || 'Unknown error'}\nPlease send manually.`);
+        if (btn) { btn.textContent = '📲 Mark as Delivered & Notify Customer'; btn.disabled = false; }
+      }
+    } catch (err) {
+      alert(`❌ Error: ${err.message}`);
+      if (btn) { btn.textContent = '📲 Mark as Delivered & Notify Customer'; btn.disabled = false; }
+    }
+
+    renderOrders();
+  }
+
+</script>
+</body>
+</html>
